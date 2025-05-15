@@ -1,4 +1,4 @@
-import { salary } from "../../js/config.js";
+
 import * as model from "./Model.js";
 import * as view from "./View.js";
 import { Product } from "./product.js";
