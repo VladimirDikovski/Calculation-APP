@@ -4,8 +4,9 @@ import { Product } from "./product.js";
 
 let dataFromLocal = [];
 let curentUser;
-let countPurchase = 0;
+
 let productList = [];
+let temporeryField = 0;
 
 window.addEventListener("load", function (e) {
   //getDate from localStorage
@@ -189,7 +190,7 @@ model.tableField.addEventListener("click", function (e) {
   row.remove();
 });
 
-//implement edut button
+//implement edit button
 model.tableField.addEventListener("click", function (e) {
   if (!e.target.classList.contains("icon-edit")) return;
 
@@ -200,7 +201,7 @@ model.tableField.addEventListener("click", function (e) {
   const productPrice = Number(row.children[3].textContent);
   const productName = row.children[2].textContent;
   const productDate = row.children[1].textContent;
-
+  temporeryField = Number(row.children[3].textContent);
   //update edit table with values from origial table
   model.editProductId.textContent = productId;
   model.editCalendarField.value = productDate;
@@ -208,7 +209,7 @@ model.tableField.addEventListener("click", function (e) {
   model.editPrice.value = productPrice;
 });
 
-//edit cloase button
+//cloase button
 model.editCloseBtn.addEventListener("click", function (e) {
   e.preventDefault();
   model.editTable.classList.add("hidden");
@@ -248,6 +249,14 @@ model.editSaveBtn.addEventListener("click", function (e) {
       el.PurchaseId
     );
   });
+
+  let deltaBetweenFiled =
+    Number(temporeryField) - Number(model.editPrice.value);
+  curentUser.salary += deltaBetweenFiled;
+
+  //update curentUser Salary
+  updateLocalSotrageCurentUser(curentUser);
+  view.showCurentBalanceSalary(model.curentBalance, curentUser.salary);
 
   //hide edit table
   model.editTable.classList.add("hidden");
