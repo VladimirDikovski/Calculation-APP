@@ -217,7 +217,18 @@ model.editCloseBtn.addEventListener("click", function (e) {
 
 //implement save edit button
 model.editSaveBtn.addEventListener("click", function (e) {
-  //edit value
+
+
+  //check for balance
+  const isEnought = checkCurentBalanceAndSalary(
+    Number(model.editPrice.value - temporeryField),
+    curentUser.salary
+  );
+  if (!isEnought)
+    return view.showValidationError(
+      model.validationMessageField,
+      "Нямаш достатъчно средства"
+    );
 
   productList
     .filter((pr) => pr.PurchaseId === Number(model.editProductId.textContent))
@@ -263,7 +274,6 @@ model.editSaveBtn.addEventListener("click", function (e) {
 });
 
 //export to excel:
-
 model.exportBtn.addEventListener("click", function () {
   const table = document.querySelector(".table");
   if (!table) {
