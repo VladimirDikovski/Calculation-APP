@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="./../Register/Style/general.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+
+    <script defer type="module" src="./JS/Controler.js"></script>
+  </head>
+  <body>
+    <header class="main-header show">
+      <nav class="nav">
+        <div class="logon-inputs">
+          <!-- ✅ Removed <form> to prevent auto submit -->
+          <div class="form-login">
+            <input
+              type="email"
+              class="input-type-login input-email"
+              required
+              placeholder=" @...."
+            />
+            <input
+              type="password"
+              class="input-type-login input-password"
+              required
+              placeholder="*****"
+            />
+          </div>
+          <button class="btn-login" type="button">Login</button>
+          <p class="error-login"></p>
+        </div>
+      </nav>
+    </header>
+
+    <div class="body-wrapper hidden">
+      <div class="status">
+        <div class="info">
+          <h2 class="name"></h2>
+          <h2 class="status-text"></h2>
+          <h1 class="curent-balance"></h1>
+        </div>
+        <div class="deposit">
+          <input type="text" class="input-deposit" placeholder="Лв." />
+          <button class="btn-deposit">Deposit</button>
+        </div>
+        <button class="export">Export To Excel</button>
+      </div>
+
+      <section class="calculation-field">
+        <form class="form container">
+          <div class="labels">
+            <label for="text" class="label">Date</label>
+            <input type="date" id="TO" name="TO" class="input-calendar input" />
+          </div>
+          <div class="labels">
+            <label for="text" class="label">Product</label>
+            <select id="menu" name="menu" class="input input-menu">
+              <option value="Ток">Ток</option>
+              <option value="Вода">Вода</option>
+              <option value="Кредит">Кредит</option>
+              <option value="Магазин">Магазин</option>
+              <option value="Дете">За детето</option>
+              <option value="Други">Други</option>
+            </select>
+          </div>
+          <div class="labels">
+            <label for="text" class="label label-cal">Price</label>
+            <input type="text" placeholder="0" class="input input-price" />
+          </div>
+
+          <div class="btns">
+            <button class="btn btn-submit" type="button">Sumbit</button>
+          </div>
+          <p class="validation"></p>
+        </form>
+      </section>
+
+      <section class="table-field">
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="header">ID</th>
+                <th class="header">Дата</th>
+                <th class="header">Продукт</th>
+                <th class="header">Цена</th>
+                <th class="header">Номер Покупка</th>
+                <th class="header">Delete</th>
+                <th class="header">Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- rows inserted by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <section class="edit-table container hidden">
+      <div class="edit-container">
+        <p class="edit-productId"></p>
+        <input
+          type="date"
+          id="TO"
+          name="TO"
+          class="input-calendar input input-edit-calendar"
+        />
+        <select
+          id="menu"
+          name="menu"
+          class="input input-menu input-edit-dropdown"
+        >
+          <option value="Ток">Ток</option>
+          <option value="Вода">Вода</option>
+          <option value="Кредит">Кредит</option>
+          <option value="Магазин">Магазин</option>
+          <option value="Дете">За детето</option>
+          <option value="Други">Други</option>
+        </select>
+        <input
+          type="text"
+          placeholder="0"
+          class="input input-price input-edit-price"
+        />
+      </div>
+      <div class="buttons-edit">
+        <button class="edit-table-save btn-edit">Save</button>
+        <button class="edit-table-close btn-edit">Close</button>
+      </div>
+    </section>
+  </body>
+</html>
